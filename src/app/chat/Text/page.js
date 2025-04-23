@@ -71,7 +71,7 @@ export default function Chat() {
           {/* Welcome Text */}
           <h2 className="text-4xl font-bold mb-3 text-[#ffff]">Hey, Mattew!</h2>
           <p className="text-gray-400 text-center max-w-md mb-12">
-            Hello! I'm here to assist you with anything you need — from
+            Hello! I&rsquo;m here to assist you with anything you need — from
             answering questions and writing content to brainstorming ideas.
           </p>
 
