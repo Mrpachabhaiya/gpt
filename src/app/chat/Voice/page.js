@@ -1,17 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
+import Orb from "@/app/components/Orb";
 export default function VoiceChat({ isOpen, onClose }) {
   const router = useRouter();
   const containerRef = useRef(null);
   const orbRef = useRef(null);
   const contentRef = useRef(null);
-  const canvasRef = useRef(null);
 
   const handleKeyboardClick = (e) => {
     e.preventDefault();
@@ -29,72 +28,6 @@ export default function VoiceChat({ isOpen, onClose }) {
 
   useEffect(() => {
     if (!isOpen) return;
-
-    // Initialize canvas animation
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    let animationFrameId;
-    let hue = 0;
-
-    const setCanvasSize = () => {
-      const size = Math.min(200, window.innerWidth * 0.7);
-      canvas.width = size;
-      canvas.height = size;
-    };
-
-    setCanvasSize();
-
-    const drawOrb = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Create gradient
-      const gradient = ctx.createRadialGradient(
-        canvas.width / 2,
-        canvas.height / 2,
-        0,
-        canvas.width / 2,
-        canvas.height / 2,
-        canvas.width * 0.4
-      );
-
-      hue = (hue + 0.2) % 360;
-
-      gradient.addColorStop(0, `hsla(${hue + 180}, 80%, 50%, 0.8)`);
-      gradient.addColorStop(0.5, `hsla(${hue + 240}, 100%, 65%, 0.3)`);
-      gradient.addColorStop(1, "transparent");
-
-      // Draw orb with glow
-      ctx.shadowColor = `hsla(${hue + 180}, 80%, 50%, 0.5)`;
-      ctx.shadowBlur = canvas.width * 0.1;
-      ctx.fillStyle = gradient;
-      ctx.beginPath();
-      ctx.arc(
-        canvas.width / 2,
-        canvas.height / 2,
-        canvas.width * 0.4,
-        0,
-        Math.PI * 2
-      );
-      ctx.fill();
-
-      // Add play button
-      ctx.fillStyle = "#fff";
-      const triangleSize = canvas.width * 0.1;
-      ctx.beginPath();
-      ctx.moveTo(
-        canvas.width / 2 - triangleSize / 2,
-        canvas.height / 2 - triangleSize
-      );
-      ctx.lineTo(
-        canvas.width / 2 - triangleSize / 2,
-        canvas.height / 2 + triangleSize
-      );
-      ctx.lineTo(canvas.width / 2 + triangleSize, canvas.height / 2);
-      ctx.closePath();
-      ctx.fill();
-
-      animationFrameId = requestAnimationFrame(drawOrb);
-    };
 
     // GSAP Animations
     const tl = gsap.timeline();
@@ -117,17 +50,7 @@ export default function VoiceChat({ isOpen, onClose }) {
         "-=0.3"
       );
 
-    drawOrb();
-
-    const handleResize = () => {
-      setCanvasSize();
-    };
-
-    window.addEventListener("resize", handleResize);
-
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener("resize", handleResize);
       if (containerRef.current) {
         gsap.to(containerRef.current, {
           opacity: 0,
@@ -148,13 +71,13 @@ export default function VoiceChat({ isOpen, onClose }) {
       <div className="p-4 flex items-center justify-between">
         <button
           onClick={onClose}
-          className="p-2 hover:bg-white/10 rounded-full transition-colors"
+          className="p-2 hover:bg-white/10 rounded-full transition-colors text-white"
           aria-label="Close"
         >
           <XMarkIcon className="w-6 h-6" />
         </button>
         <Link href={"/"}>
-          <h1 className="text-xl font-semibold flex items-center gap-1">
+          <h1 className="text-xl font-semibold flex items-center gap-1 text-white">
             ChatGPT
             <span className="text-sm text-gray-400">4o</span>
             <span className="text-gray-400">&gt;</span>
@@ -167,18 +90,19 @@ export default function VoiceChat({ isOpen, onClose }) {
         ref={contentRef}
         className="flex-1 flex flex-col items-center justify-center px-6 pb-10"
       >
-        <h2 className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-20 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-20 text-center text-white">
           What Can I Do
           <br />
           for you Today?
         </h2>
 
+        {/* Orb Component with ref for animations */}
         <div
           ref={orbRef}
           className="relative w-[200px] h-[200px] sm:w-[300px] sm:h-[300px]"
         >
-          <canvas
-            ref={canvasRef}
+          <Orb
+            size={300}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
         </div>
