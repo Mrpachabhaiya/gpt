@@ -148,7 +148,7 @@ export default function Home() {
     return () => ctx.revert(); // Cleanup on unmount
   };
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen p-4 bg-[#0a0a14]">
+    <div className="flex flex-col items-center justify-start min-h-screen p-4 bg-[#0a0a14] relative overflow-hidden">
       {/* Header */}
       <div ref={headerRef} className="text-center space-y-2 mb-12">
         <h1 className="text-4xl font-bold tracking-wide text-[#fff]">
@@ -192,7 +192,10 @@ export default function Home() {
 
         {/* Feature Cards with proper spacing */}
         <div ref={containerRef} className="grid grid-cols-2 gap-4 mt-4 mb-8">
-          <div ref={leftCardRef} className="glass-effect p-6 text-start">
+          <div
+            ref={leftCardRef}
+            className="glass-effect p-6 text-start border-2 border-amber-50"
+          >
             <div className="mb-3 mt-16">
               <svg
                 className="w-6 h-6 text-purple-400/80"
@@ -215,7 +218,10 @@ export default function Home() {
               Debug and write code in multiple languages
             </p>
           </div>
-          <div ref={rightCardRef} className="glass-effect p-6 text-start">
+          <div
+            ref={rightCardRef}
+            className="glass-effect p-6 text-start border-2 border-amber-50"
+          >
             <div className="mb-3 mt-16">
               <svg
                 className="w-6 h-6 text-purple-400/80"
