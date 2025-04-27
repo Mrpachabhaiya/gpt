@@ -148,7 +148,7 @@ export default function Home() {
     return () => ctx.revert(); // Cleanup on unmount
   };
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen p-4 bg-[#0a0a14] relative overflow-hidden">
+    <div className="flex flex-col items-center justify-start min-h-screen p-4 bg-[#0a0a14] relative overflow-x-hidden">
       {/* Header */}
       <div ref={headerRef} className="text-center space-y-2 mb-12">
         <h1 className="text-4xl font-bold tracking-wide text-[#fff]">
