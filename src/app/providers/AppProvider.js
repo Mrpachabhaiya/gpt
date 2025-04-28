@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import Loading from "../components/Loading";
+import Loading from "../../components/Loading";
 
 export default function AppProvider({ children }) {
   const pathname = usePathname();
