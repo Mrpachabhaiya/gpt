@@ -5,175 +5,7 @@ export const useGsapAnimation = () => {
 	const secondTimeline = useRef(null);
 	const thirdTimeline = useRef(null);
 
-	useEffect(() => {
-		const tll = gsap.timeline({ paused: true });
-		tll
-			.to(".header-card", {
-				y: -800,
-				opacity: 0,
-				duration: 2,
-
-				ease: "power2.out",
-			})
-			.to(
-				".left-card",
-				{
-					x: -300,
-					opacity: 0,
-					duration: 2,
-
-					ease: "back.out(1.7)",
-				},
-				"<"
-			)
-			.to(
-				".right-card",
-				{
-					x: 300,
-					opacity: 1,
-
-					duration: 2,
-
-					ease: "back.out(1.7)",
-				},
-				"<"
-			)
-			.to(
-				".headerTitle",
-				{
-					y: -200,
-					opacity: 0,
-
-					duration: 2,
-
-					ease: "back.out(1.7)",
-				},
-				"<"
-			)
-			.to(
-				".footer",
-				{
-					y: 300,
-					opacity: 0,
-
-					duration: 2,
-
-					ease: "back.out(1.7)",
-				},
-				"<"
-			)
-			.to(".screen-three", {
-				display: "flex",
-				delay: -2,
-				// opacity: 0,
-				ease: "back.out(1.7)",
-			})
-			.from(".top-text", {
-				y: -500,
-				delay: -2,
-				opacity: 0,
-				duration: 2,
-				ease: "back.out(1.7)",
-			})
-			.from(".buttons", {
-				y: 200,
-				delay: -2,
-				opacity: 0,
-				duration: 2,
-				ease: "back.out(1.7)",
-			});
-
-		secondTimeline.current = tll;
-	}, []);
-
-	useEffect(() => {
-		gsap.set(".top-title", {
-			y: 100,
-			opacity: 0,
-		});
-		gsap.set(".main-content", {
-			y: 100,
-			opacity: 0,
-		});
-		gsap.set(".footer-fourth", {
-			y: 300,
-			// opacity: 0,
-		});
-		gsap.set(".screen-four", {
-			height: 0,
-			y: -100,
-			opacity: 0,
-		});
-		gsap.set(".animated-circle", {
-			x: -200,
-			y: -650,
-			height: "150px",
-			width: "150px",
-			zIndex: 100,
-			opacity: 0,
-		});
-		const thirdTl = gsap.timeline({ paused: true });
-		thirdTl
-			.to(".top-text", {
-				y: -800,
-				opacity: 0,
-				duration: 2,
-
-				ease: "power2.out",
-			})
-			.to(
-				".buttons",
-				{
-					y: 400,
-					opacity: 0,
-
-					ease: "back.out(1.7)",
-				},
-				"<"
-			)
-			.to(".screen-four", {
-				height: 300,
-				duration: 1,
-				y: 0,
-				opacity: 1,
-				delay: -10,
-				stagger: 0.5,
-			})
-			.to(".top-title", {
-				y: 0,
-				opacity: 1,
-				delay: -1.5,
-
-				duration: 1,
-
-				ease: "back.out(1.7)",
-			})
-			.to(".main-content", {
-				y: 0,
-				opacity: 1,
-				delay: -1.5,
-
-				ease: "back.out(1.7)",
-			})
-			.to(".footer-fourth ", {
-				y: 0,
-				opacity: 1,
-				delay: -1.5,
-
-				ease: "back.out(1.7)",
-			})
-			.to(".animated-circle", {
-				x: 0,
-				y: 0,
-				height: 20,
-				width: 20,
-				duration: 2,
-				delay: -1,
-				ease: "back.out(1.7)",
-			});
-
-		thirdTimeline.current = thirdTl;
-	}, []);
+	//initial animation when the page loads
 
 	useEffect(() => {
 		const leftElements = document.querySelectorAll(".left-card > *");
@@ -290,6 +122,182 @@ export const useGsapAnimation = () => {
 				ease: "power2.out",
 			});
 	}, []);
+
+	useEffect(() => {
+		gsap.set(".top-text", { y: -300, opacity: 0 });
+		gsap.set(".buttons", { y: 300, opacity: 0 });
+		gsap.set(".screen-three", { height: 0, opacity: 0 });
+
+		const tll = gsap.timeline({ paused: true });
+		tll
+			.to(".header-card", {
+				y: -800,
+				opacity: 0,
+				duration: 2,
+
+				ease: "power2.out",
+			})
+			.to(
+				".left-card",
+				{
+					x: -300,
+					opacity: 0,
+					duration: 2,
+
+					ease: "back.out(1.7)",
+				},
+				"<"
+			)
+			.to(
+				".right-card",
+				{
+					x: 300,
+					opacity: 1,
+
+					duration: 2,
+
+					ease: "back.out(1.7)",
+				},
+				"<"
+			)
+			.to(
+				".headerTitle",
+				{
+					y: -200,
+					opacity: 0,
+
+					duration: 2,
+
+					ease: "back.out(1.7)",
+				},
+				"<"
+			)
+			.to(
+				".footer",
+				{
+					y: 300,
+					opacity: 0,
+
+					duration: 2,
+
+					ease: "back.out(1.7)",
+				},
+				"<"
+			)
+			.to(".screen-three", {
+				height: "100%",
+				delay: -2,
+				opacity: 1,
+				ease: "back.out(1.7)",
+			})
+			.to(".top-text", {
+				y: 0,
+				delay: -2,
+				opacity: 1,
+				duration: 1,
+				ease: "power2.out",
+			})
+			.to(".buttons", {
+				y: 0,
+				delay: -2,
+				opacity: 1,
+				duration: 1,
+				ease: "power2.out",
+			});
+
+		secondTimeline.current = tll;
+	}, []);
+
+	useEffect(() => {
+		gsap.set(".top-title", {
+			y: 100,
+			opacity: 0,
+		});
+		gsap.set(".main-content", {
+			y: 100,
+			opacity: 0,
+		});
+		gsap.set(".footer-fourth", {
+			y: 300,
+			// opacity: 0,
+		});
+		gsap.set(".screen-four", {
+			height: 0,
+			y: -100,
+			opacity: 0,
+		});
+		gsap.set(".animated-circle", {
+			x: -200,
+			y: -650,
+			height: "150px",
+			width: "150px",
+			zIndex: 100,
+			opacity: 0,
+		});
+		const thirdTl = gsap.timeline({ paused: true });
+		thirdTl
+			.to(".top-text", {
+				y: -800,
+				opacity: 0,
+				duration: 2,
+
+				ease: "power2.out",
+			})
+			.to(
+				".buttons",
+				{
+					y: 400,
+					opacity: 0,
+
+					ease: "power2.out",
+				},
+				"<"
+			)
+			.to(".animated-circle", {
+				x: 0,
+				y: 0,
+				height: 50,
+				width: 50,
+				opacity: 0,
+				duration: 2,
+				delay: -2,
+				ease: "power2.out",
+			})
+			.to(".screen-four", {
+				height: "100%",
+				duration: 1,
+				y: 0,
+				opacity: 1,
+				delay: -10,
+				stagger: 0.5,
+			})
+			.to(".top-title", {
+				y: 0,
+				opacity: 1,
+				delay: -1.5,
+
+				duration: 1,
+
+				ease: "power2.out",
+			})
+			.to(".main-content", {
+				y: 0,
+				opacity: 1,
+				delay: -1.5,
+
+				ease: "power2.out",
+			})
+			.to(".footer-fourth ", {
+				y: 0,
+				opacity: 1,
+				delay: -1.5,
+
+				ease: "power2.out",
+			});
+
+		thirdTimeline.current = thirdTl;
+	}, []);
+
 	const startSecondTimeline = () => {
 		console.log("clickeed");
 		secondTimeline.current.play();
