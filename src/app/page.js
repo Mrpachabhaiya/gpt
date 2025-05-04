@@ -13,18 +13,18 @@ import { useGsapAnimation } from "@/hooks/useAnimation";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-	const { startSecondTimeline, startThirdTimeline } = useGsapAnimation();
+  const { startSecondTimeline, startThirdTimeline } = useGsapAnimation();
 
-	return (
-		<div className="bg-black">
-			<IPhoneFrame>
-				<ScreenOne />
-				<Fader />
-				<ScreenTwo onClick={startSecondTimeline} />
-				<ScreenThree onClick={startThirdTimeline} />
-				<ScreenFour />
-			</IPhoneFrame>
-			{/* <Fader /> */}
-		</div>
-	);
+  return (
+    <div className="bg-black">
+      <IPhoneFrame>
+        <ScreenOne />
+        {/* <Fader /> */}
+        <ScreenTwo onClick={startSecondTimeline} />
+        <ScreenThree onClick={startThirdTimeline} />
+        <ScreenFour onClick={startThirdTimeline} />
+      </IPhoneFrame>
+      {/* <Fader /> */}
+    </div>
+  );
 }
