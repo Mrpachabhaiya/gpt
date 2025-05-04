@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { Fader } from "./Fader";
 import Image from "next/image";
 
-const ScreenTwo = () => {
+const ScreenTwo = ({ onClick }) => {
 	const headerRef = useRef(null);
 	const gradientCardRef = useRef(null);
 	const leftCardRef = useRef(null);
@@ -13,17 +13,17 @@ const ScreenTwo = () => {
 	const footerSectionRef = useRef(null);
 	const orbContainerRef = useRef(null);
 	const containerRef = useRef(null);
-	useEffect(() => {
-		gsap.set(leftCardRef, {
-			x: -500,
-		});
-		gsap.set(rightCardRef, {
-			x: 500,
-		});
-		gsap.set(headerRef, {
-			y: 500,
-		});
-	}, []);
+	// useEffect(() => {
+	// 	gsap.set(leftCardRef, {
+	// 		x: -500,
+	// 	});
+	// 	gsap.set(rightCardRef, {
+	// 		x: 500,
+	// 	});
+	// 	gsap.set(headerRef, {
+	// 		y: 500,
+	// 	});
+	// }, []);
 
 	return (
 		<div className="screen-two max-h-screen overflow-hidden absolute opacity-0 top-0 left-0  flex flex-col items-center justify-start min-h-screen p-4 bg-[#0a0a14] relative overflow-x-hidden">
@@ -46,7 +46,7 @@ const ScreenTwo = () => {
 				{/* Purple Gradient Card with Cutout */}
 				<div
 					ref={gradientCardRef}
-					className="header-card gradient-card rounded-3xl p-8 text-center relative z-10 overflow-visible"
+					className="header-card gradient-card rounded-3xl p-8 text-center relative z-0 overflow-visible"
 				>
 					<div className="mb-16 relative titleText">
 						<Image
@@ -61,16 +61,25 @@ const ScreenTwo = () => {
 						<p className="text-purple-200/80">Powerful Outcomes</p>
 					</div>
 					{/* <Orb size={200} className="relative" /> */}
-					<div className="absolute  flex items-center justify-center left-[30%] -translate-x-1/2  top-[70%] translate-y-[10%] w-[140px] h-[140px] bg-[#0a0a14] rounded-full"></div>
+					{/* <div className="absolute  flex items-center justify-center left-[30%] -translate-x-1/2  top-[70%] translate-y-[10%] w-[140px] h-[140px] bg-[#0a0a14] rounded-full"></div> */}
 
 					{/* Card Cutout Shape */}
-					<div
-						ref={orbContainerRef}
-						className="absolute   left-[30%] -translate-x-1/2 y-1/2 top-[70%]  -translate-y-[10%]   z-20"
-					>
-						<div className="relative w-[140px] h-[140px]">
-							{/* <Orb size={200} className="relative" /> */}
-						</div>
+				</div>
+				<div
+					ref={orbContainerRef}
+					className="absolute z-100  left-[30%] -translate-x-1/2  top-[27%]  -translate-y-[50%]  "
+				>
+					<div className="relative w-[140px] h-[140px]">
+						{/* <Orb size={200} className="relative" /> */}
+						{/* <div className="w-full h-full rounded-full bg-black border-4 border-black relative overflow-hidden shadow-[0_0_60px_20px_rgba(147,51,234,0.5)]">
+							<div className="absolute inset-0 rounded-full bg-[conic-gradient(from_90deg_at_50%_50%,#8b5cf6,#6366f1,#a855f7,#8b5cf6)] animate-spin-slow opacity-80 blur-sm"></div>
+
+							<div className="absolute inset-0 rounded-full bg-white opacity-10 blur-2xl pointer-events-none"></div>
+
+							<div className="absolute top-3 left-4 w-16 h-16 bg-white/30 rounded-full blur-lg opacity-70 animate-floating"></div>
+
+							<div className="absolute bottom-4 right-6 w-10 h-10 bg-white/20 rounded-full blur-md opacity-50 animate-floating-slow"></div>
+						</div> */}
 					</div>
 				</div>
 
@@ -133,10 +142,13 @@ const ScreenTwo = () => {
 				{/* Get Started Button */}
 				<div ref={footerSectionRef}>
 					<div
-						className="relative mt-4"
-						onClick={() => handleNavigation("/chat/Text")}
+						className="footer relative mt-4"
+						// onClick={() => handleNavigation("/chat/Text")}
 					>
-						<button className="w-full bg-white text-black font-semibold py-4 px-6 rounded-full text-center hover:bg-gray-100 transition-colors mb-6 flex items-center justify-center">
+						<button
+							className="w-full bg-white text-black font-semibold py-4 px-6 rounded-full text-center hover:bg-gray-100 transition-colors mb-6 flex items-center justify-center relative z-10"
+							onClick={onClick}
+						>
 							<span className="absolute left-4 text-black/50">
 								&gt;&gt;&gt;
 							</span>

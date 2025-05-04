@@ -77,3 +77,44 @@ input:focus {
 	outline: none;
 	box-shadow: none;
 }
+
+@keyframes floating {
+	0%,
+	100% {
+		transform: translate(0, 0);
+	}
+	50% {
+		transform: translate(6px, -6px);
+	}
+}
+
+@keyframes floating-slow {
+	0%,
+	100% {
+		transform: translate(0, 0);
+	}
+	50% {
+		transform: translate(-5px, 5px);
+	}
+}
+
+@keyframes spin-slow {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.animate-floating {
+	animation: floating 5s ease-in-out infinite;
+}
+
+.animate-floating-slow {
+	animation: floating-slow 7s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+	animation: spin-slow 20s linear infinite;
+}
