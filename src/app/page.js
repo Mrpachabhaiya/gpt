@@ -22,7 +22,7 @@ export default function Home() {
         {/* <Fader /> */}
         <ScreenTwo onClick={startSecondTimeline} />
         <ScreenThree onClick={startThirdTimeline} />
-        <ScreenFour onClick={startThirdTimeline} />
+        <ScreenFour />
       </IPhoneFrame>
       {/* <Fader /> */}
     </div>

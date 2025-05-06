@@ -1,17 +1,45 @@
 import { FaPlus } from "react-icons/fa";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { FcIdea } from "react-icons/fc";
 import { BsSoundwave } from "react-icons/bs";
 
-export default function ScreenFour({ onClick }) {
+export default function ScreenFour() {
+  const circleRef = useRef(null);
   useEffect(() => {
     document.body.style.background =
       "linear-gradient(to bottom, #0c0c1c, #111122)";
     return () => {
       document.body.style.background = "";
     };
+  }, []);
+
+  // positioning at center
+  const centerCircle = () => {
+    if (!circleRef.current) return;
+
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    const circleRect = circleRef.current.getBoundingClientRect();
+    const circleWidth = circleRect.width;
+    const circleHeight = circleRect.height;
+
+    const centerX = (viewportWidth - circleWidth) / 2;
+    const centerY = (viewportHeight - circleHeight) / 2;
+
+    gsap.set(circleRef.current, {
+      x: centerX,
+      y: centerY,
+      position: "fixed",
+    });
+  };
+  // clean up
+  useEffect(() => {
+    const handleResize = () => centerCircle();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -101,10 +129,7 @@ export default function ScreenFour({ onClick }) {
               </svg>
             </button>
           </div>
-          <div
-            onClick={onClick}
-            className="iconWrapper p-1 rounded-full bg-white relative  flex justify-center items-center z-10 "
-          >
+          <div className="iconWrapper p-1 rounded-full bg-white relative  flex justify-center items-center z-10 ">
             <BsSoundwave color="black" size={12} />
           </div>
           <div className="relative h-16 w-16 flex items-center justify-center  rounded-full">
@@ -117,7 +142,10 @@ export default function ScreenFour({ onClick }) {
                 className="absolute left-1"
               />
             </div>
-            <div className="animated-circle w-full h-full rounded-full bg-black border-4 border-black absolute overflow-hidden shadow-[0_0_60px_20px_rgba(147,51,234,0.5)] top-0 left-0 z-100 opacity-0 ">
+            <div
+              ref={circleRef}
+              className="animated-circle w-full h-full rounded-full bg-black border-4 border-black absolute overflow-hidden shadow-[0_0_60px_20px_rgba(147,51,234,0.5)] top-0 left-0 z-100 opacity-0 "
+            >
               <div className="absolute inset-0 rounded-full bg-[conic-gradient(from_90deg_at_50%_50%,#8b5cf6,#6366f1,#a855f7,#8b5cf6)] animate-spin-slow opacity-80 blur-sm"></div>
 
               <div className="absolute inset-0 rounded-full bg-white opacity-10 blur-2xl pointer-events-none"></div>
