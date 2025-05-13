@@ -227,7 +227,7 @@ export const useGsapAnimation = () => {
 			opacity: 0,
 		});
 		gsap.set(".animated-circle", {
-			x: -200,
+			x: -215,
 			y: -650,
 			height: "150px",
 			width: "150px",
