@@ -54,7 +54,7 @@ const ScreenTwo = ({ onClick }) => {
               src={"/chatgptlogo.png"}
               height={30}
               width={30}
-              className=" logo absolute left-[45%] -translate-x-1/2 -top-[45%]"
+              className=" logo absolute left-[50%] -translate-x-1/2 -top-[45%]"
             />
             <h2 className="  text-4xl font-bold text-white text-center mt-10 leading-8">
               Effortless Conversations

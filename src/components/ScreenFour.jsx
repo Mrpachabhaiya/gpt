@@ -145,7 +145,7 @@ export default function ScreenFour() {
             <div
               ref={circleRef}
               className="animated-circle w-full h-full rounded-full bg-black border-4 border-black absolute overflow-hidden shadow-[0_0_60px_20px_rgba(147,51,234,0.5)] top-0 left-0 z-100 opacity-0 "
-            >
+            >        
               <div className="absolute inset-0 rounded-full bg-[conic-gradient(from_90deg_at_50%_50%,#8b5cf6,#6366f1,#a855f7,#8b5cf6)] animate-spin-slow opacity-80 blur-sm"></div>
 
               <div className="absolute inset-0 rounded-full bg-white opacity-10 blur-2xl pointer-events-none"></div>
