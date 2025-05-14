@@ -17,6 +17,10 @@ body {
 	position: relative;
 	isolation: isolate;
 }
+.visible {
+	visibility: visible !important;
+	/* display: flex; */
+}
 
 .gradient-card::before {
 	content: "";

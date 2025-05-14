@@ -53,7 +53,7 @@ const ScreenTwo = ({ onClick }) => {
 							src={"/chatgptlogo.png"}
 							height={30}
 							width={30}
-							className=" logo absolute left-[50%] -translate-x-1/2 -top-[45%]"
+							className="logo absolute left-[45%] -translate-x-1/2 -top-[45%]"
 						/>
 						<h2 className="  text-4xl font-bold text-white text-center mt-10 leading-8">
 							Effortless Conversations
@@ -147,7 +147,7 @@ const ScreenTwo = ({ onClick }) => {
 					>
 						<button
 							className="w-full bg-white text-black font-semibold py-4 px-6 rounded-full text-center hover:bg-gray-100 transition-colors mb-6 flex items-center justify-center relative z-10"
-							onClick={onClick}
+							onClick={(e) => onClick(e)}
 						>
 							<span className="absolute left-4 text-black/50">
 								&gt;&gt;&gt;

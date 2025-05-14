@@ -298,7 +298,9 @@ export const useGsapAnimation = () => {
 		thirdTimeline.current = thirdTl;
 	}, []);
 
-	const startSecondTimeline = () => {
+	const startSecondTimeline = (e) => {
+		e.preventDefault();
+		document.querySelector(".screen-three").classList.add("visible");
 		console.log("clickeed");
 		secondTimeline.current.play();
 	};

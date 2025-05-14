@@ -6,7 +6,10 @@ import { MdCancel } from "react-icons/md";
 
 export const ScreenThree = ({ onClick }) => {
 	return (
-		<div className="screen-three absolute top-0 left-0 h-full w-full  flex-col justify-between items-center flex z-100 opacity-0">
+		<div
+			className="screen-three absolute top-0 left-0 h-full w-full  flex-col justify-between items-center flex z-100  "
+			style={{ visibility: "hidden" }}
+		>
 			<h1 className="top-text  text-white text-4xl text-center w-[70%] font-semibold mt-12">
 				What Can I Do for you Today
 			</h1>
